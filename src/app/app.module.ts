@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SnakeGridComponent } from './components/snake-grid/snake-grid.component';
+import { SnakePanelComponent } from './components/snake-panel/snake-panel.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SnakeGridComponent,
+    SnakePanelComponent
   ],
   imports: [
     BrowserModule,

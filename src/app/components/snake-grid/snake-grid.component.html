@@ -1,0 +1,5 @@
+<div class="grid">
+    <div *ngFor = "let col of grid" class="row">
+        <div *ngFor = "let visit of col" class="cell" [ngClass]="{'active-cell' : visit}"></div>
+    </div>
+</div>
