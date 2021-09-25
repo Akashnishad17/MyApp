@@ -37,14 +37,12 @@ export class SnakeGridComponent implements OnInit {
     this.snake.push(new Cordinate(20, 26));
 
     this.snake.forEach((element: Cordinate)=>{
-      if(this.grid && element.x && element.y){
+      if(this.grid && element.x != undefined && element.y != undefined){
         this.grid[element.x][element.y] = true;
       }
     });
 
-    this.food = new Cordinate(10, 50);
-    if(this.grid && this.food && this.food.x && this.food.y)
-      this.grid[this.food.x][this.food.y] = true;
+    this.generateFood();
 
     var source = interval(150);
     source.subscribe(res => {    
@@ -64,7 +62,7 @@ export class SnakeGridComponent implements OnInit {
 
   popLastElement(){
     var cor: Cordinate | undefined = this.snake.pop();
-    if(this.grid && cor && cor.x && cor.y)
+    if(this.grid && cor && cor.x != undefined && cor.y != undefined)
       this.grid[cor.x][cor.y] = false;
   }
 
@@ -86,13 +84,13 @@ export class SnakeGridComponent implements OnInit {
     if(this.snake && this.grid && (keyNotPressed || (this.direction != "up" && this.direction != "down"))){
       var x = this.snake[0].x;
       var y = this.snake[0].y;
-      if(x && y && x - 1 >= 0)
+      if(x != undefined && y != undefined && x - 1 >= 0)
       {
         if(keyNotPressed)
           {
           this.snake.splice(0, 0, new Cordinate(x - 1, y));
           this.grid[x-1][y] = true;
-          if(this.food && this.food.x && this.food.y && !(this.food.x == x - 1 && this.food.y == y))
+          if(this.food && this.food.x != undefined && this.food.y != undefined && !(this.food.x == x - 1 && this.food.y == y))
           {
             this.popLastElement();
           }else{
@@ -109,13 +107,13 @@ export class SnakeGridComponent implements OnInit {
     if(this.snake && this.grid && (keyNotPressed || (this.direction != "up" && this.direction != "down"))){
       var x = this.snake[0].x;
       var y = this.snake[0].y;
-      if(x && y && x + 1 < this.row)
+      if(x != undefined && y != undefined && x + 1 < this.row)
       {
         if(keyNotPressed)
         {
           this.snake.splice(0, 0, new Cordinate(x + 1, y));
           this.grid[x+1][y] = true;
-          if(this.food && this.food.x && this.food.y && !(this.food.x == x + 1 && this.food.y == y))
+          if(this.food && this.food.x != undefined && this.food.y != undefined && !(this.food.x == x + 1 && this.food.y == y))
           {
             this.popLastElement();
           }else{
@@ -132,13 +130,13 @@ export class SnakeGridComponent implements OnInit {
     if(this.snake && this.grid && (keyNotPressed || (this.direction != "left" && this.direction != "right"))){
       var x = this.snake[0].x;
       var y = this.snake[0].y;
-      if(x && y && y - 1 >= 0)
+      if(x != undefined && y != undefined && y - 1 >= 0)
       {
         if(keyNotPressed)
         {
           this.snake.splice(0, 0, new Cordinate(x, y - 1));
           this.grid[x][y-1] = true;
-          if(this.food && this.food.x && this.food.y && !(this.food.x == x && this.food.y == y - 1))
+          if(this.food && this.food.x != undefined && this.food.y != undefined && !(this.food.x == x && this.food.y == y - 1))
           {
             this.popLastElement();
           }else{
@@ -155,13 +153,13 @@ export class SnakeGridComponent implements OnInit {
     if(this.snake && this.grid && (keyNotPressed || (this.direction != "left" && this.direction != "right"))){
       var x = this.snake[0].x;
       var y = this.snake[0].y;
-      if(x && y && y + 1 < this.col)
+      if(x != undefined && y != undefined && y + 1 < this.col)
       {
         if(keyNotPressed)
         {
           this.snake.splice(0, 0, new Cordinate(x, y + 1));
           this.grid[x][y+1] = true;
-          if(this.food && this.food.x && this.food.y && !(this.food.x == x && this.food.y == y + 1))
+          if(this.food && this.food.x != undefined && this.food.y != undefined && !(this.food.x == x && this.food.y == y + 1))
           {
             this.popLastElement();
           }else{
