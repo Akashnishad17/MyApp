@@ -1,1 +1,7 @@
-<p>snake-panel works!</p>
+<div *ngIf="!started" class="start-button" (click)="startGame()">START GAME</div>
+<div *ngIf="started" class="start-button" (click)="startGame()">RESET GAME</div>
+
+<div *ngIf="!started && !end" class="message"><i>Click on Start Game to start the game</i></div>
+<div *ngIf="!started && end" class="message"><i>Game Over, Click on Start Game to start the game</i></div>
+<div *ngIf="started && !paused" class="message"><i>Click on Reset Game to reset the game or Press Space to pause/continue game</i></div>
+<div *ngIf="started && paused" class="message"><i>Click on Reset Game to reset the game or Press Space to pause/continue game (Game Paused)</i></div>

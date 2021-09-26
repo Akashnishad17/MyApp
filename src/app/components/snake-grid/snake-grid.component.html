@@ -1,5 +1,6 @@
+<div class="score">YOUR SCORE: {{score}}</div>
 <div class="grid">
-    <div *ngFor = "let col of grid" class="row">
-        <div *ngFor = "let visit of col" class="cell" [ngClass]="{'active-cell' : visit}"></div>
+    <div *ngFor = "let col of grid, let i = index" class="row">
+        <div *ngFor = "let visit of col, let j = index" class="cell" [ngClass]="{'active-cell' : visit, 'food-cell' : food && i == food.x && j == food.y}"></div>
     </div>
 </div>
